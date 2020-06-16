@@ -22,15 +22,18 @@ import java.util.List;
 @Component
 public class JwtTokenProvider {
 
-
     @Value("spring.jwt.secret")
     private String secretKey;
+
     private long tokenValidMilisecond = 1000L * 60 * 60; // 1시간만 토큰 유효
+
     private final UserDetailsService userDetailsService;
+
     @PostConstruct
     protected void init() {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
+
     // Jwt 토큰 생성
     public String createToken(String userPk, List<String> roles) {
         Claims claims = Jwts.claims().setSubject(userPk);

@@ -26,9 +26,13 @@ import java.util.Collections;
 public class SignRestController {
 
     private final UserJpaRepo userJpaRepo;
+
     private final JwtTokenProvider jwtTokenProvider;
+
     private final ResponseService responseService;
+
     private final PasswordEncoder passwordEncoder;
+
     @ApiOperation(value = "로그인", notes = "이메일 회원 로그인을 한다.")
     @PostMapping(value = "/signin")
     public SingleResult<String> signin(@ApiParam(value = "회원ID : 이메일", required = true) @RequestParam String id,
@@ -38,6 +42,7 @@ public class SignRestController {
             throw new CEmailSigninFailedException();
         return responseService.getSingleResult(jwtTokenProvider.createToken(String.valueOf(user.getMsrl()), user.getRoles()));
     }
+
     @ApiOperation(value = "가입", notes = "회원가입을 한다.")
     @PostMapping(value = "/signup")
     public CommonResult signin(@ApiParam(value = "회원ID : 이메일", required = true) @RequestParam String id,

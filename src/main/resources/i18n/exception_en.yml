@@ -7,3 +7,9 @@ userNotFound:
 emailSigninFailed:
   code: "-1001"
   msg: "Your account does not exist or your email or password is incorrect."
+entryPointException:
+  code: "-1002"
+  msg: "You do not have permission to access this resource."
+accessDenied:
+  code: "-1003"
+  msg: "A resource that can not be accessed with the privileges it has."
