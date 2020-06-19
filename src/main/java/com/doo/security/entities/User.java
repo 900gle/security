@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user")
+@Table(name = "api_user")
 public class User implements UserDetails {
 
     @Id // pk
