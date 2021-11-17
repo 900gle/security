@@ -54,12 +54,12 @@ public class UserRestController {
     @ApiOperation(value = "회원 수정", notes = "회원정보를 수정한다")
     @PutMapping(value = "/user")
     public SingleResult<User> modify(
-            @ApiParam(value = "회원번호", required = true) @RequestParam int msrl,
+            @ApiParam(value = "회원번호", required = true) @RequestParam long msrl,
             @ApiParam(value = "회원이름", required = true) @RequestParam String name) {
-        User user = User.builder()
-                .msrl(msrl)
-                .name(name)
-                .build();
+
+
+        User user = userJpaRepo.getOne(msrl);
+        user.setName(name);
         return responseService.getSingleResult(userJpaRepo.save(user));
     }
 
